@@ -27,9 +27,26 @@ class App extends Component {
     this.handleFilterChange = this.handleFilterChange.bind(this);
   }
 
+  filterHotels(filters,hotels) {
+    const { dateFrom, dateTo, country, price, rooms} = filters;
+    console.log(filters)
+    console.log(hotels)
+    return hotels.filter(hotel => {
+      return Moment(hotel.availabilityFrom).format("YYYY-MM-DD") >= dateFrom &&
+             Moment(hotel.availabilityTo).format("YYYY-MM-DD") <= dateTo &&
+             hotel.rooms <= (rooms !== 0 ? rooms : hotel.rooms) &&
+             hotel.price <=(price !== 0 ? parseInt(price) : hotel.price) &&
+             hotel.country.trim().toLowerCase() === (country !== "" ? country.trim().toLowerCase() : hotel.country.trim().toLowerCase())
+    })
+  }
+
   handleFilterChange(payload) {
+    const newFilteredHotels = this.filterHotels(payload,this.state.hotels);
+    console.log(newFilteredHotels);
+
     this.setState({
-      filters: payload
+      filters: payload,
+      filteredHotels: newFilteredHotels
     });
   }
 
@@ -64,7 +81,7 @@ class App extends Component {
 
   render() {
     const { filters, filteredHotels } = this.state;
-    
+
     return (
       <Fragment>
         <Hero filters={filters} />

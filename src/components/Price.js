@@ -2,7 +2,7 @@ import React from 'react';
 
 const Price = (props) => {
     const { price } = props;
-    console.log(price)
+    
     let precioCadena = [];
     for (let index = 0; index < price; index++) {
       precioCadena.push(

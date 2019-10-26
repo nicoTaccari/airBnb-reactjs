@@ -12,28 +12,28 @@ class OptionsFilter extends Component {
       this.props.onFilterChange(event);
   }
 
-  selectItems(options) {
-    const listItems = options.map((item, index) => (
-        <option key={index} name={item.name}>
-        {item.name}
-        </option>
-      ));
-      return listItems
-  }
+//   selectItems(options) {
+//     const listItems = options.map((item, index) => (
+//         <option key={index} name={item.name}>
+//         {item.name}
+//         </option>
+//       ));
+//       return listItems
+//   }
 
   render() {
-      let options = this.props.options;
+      const { options, icon, selected, name } = this.props
     return (
       <>
         <div className="field">
           <div className="control has-icons-left">
             <div className="select" style={{ width: "100%" }}>
-              <select style={{ width: "100%" }} onChange={this.handleOptionChange}>
-                {this.selectItems(options)}
-              </select>
+            <select defaultValue={selected} name={name} onChange={this.handleOptionChange}>
+              {options.map((opcion)=> <option value={opcion.value}>{opcion.name}</option>)}  
+            </select>
             </div>
             <div className="icon is-small is-left">
-              <i className="fas"></i>
+              <i className={"fa fa-" + icon}></i>
             </div>
           </div>
         </div>
