@@ -7,7 +7,6 @@ class Hero extends Component {
     super(props);
     Moment.locale("es");
     this.state = props.filters;
-    console.log(this.state);
   }
 
   render() {
