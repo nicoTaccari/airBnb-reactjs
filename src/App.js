@@ -15,9 +15,9 @@ class App extends Component {
         dateTo: Moment()
           .add(1, "month")
           .format("YYYY-MM-DD"),
-        country: "",
-        price: 0,
-        rooms: 0
+        country: "select",
+        price: "select",
+        rooms: "select"
       },
       hotels: [],
       filteredHotels: [],
@@ -34,16 +34,15 @@ class App extends Component {
     return hotels.filter(hotel => {
       return Moment(hotel.availabilityFrom).format("YYYY-MM-DD") >= dateFrom &&
              Moment(hotel.availabilityTo).format("YYYY-MM-DD") <= dateTo &&
-             hotel.rooms <= (rooms !== 0 ? rooms : hotel.rooms) &&
-             hotel.price <=(price !== 0 ? parseInt(price) : hotel.price) &&
-             hotel.country.trim().toLowerCase() === (country !== "" ? country.trim().toLowerCase() : hotel.country.trim().toLowerCase())
+             hotel.rooms <= (rooms !== "select" ? rooms : hotel.rooms) &&
+             hotel.price <=(price !== "select" ? parseInt(price) : hotel.price) &&
+             hotel.country.trim().toLowerCase() === (country !== "select" ? country.trim().toLowerCase() : hotel.country.trim().toLowerCase())
     })
   }
 
   handleFilterChange(payload) {
     const newFilteredHotels = this.filterHotels(payload,this.state.hotels);
     console.log(newFilteredHotels);
-
     this.setState({
       filters: payload,
       filteredHotels: newFilteredHotels

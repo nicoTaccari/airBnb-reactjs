@@ -8,7 +8,7 @@ class OptionsFilter extends Component {
   }
 
   handleOptionChange(event) {
-      console.log(event.target.name)
+      console.log(event.target.value)
       this.props.onFilterChange(event);
   }
 

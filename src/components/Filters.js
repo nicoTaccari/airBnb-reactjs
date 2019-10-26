@@ -20,21 +20,21 @@ class Filters extends Component {
   render() {
     const { filters } = this.props;
     const countryOptions = [
-      { value: undefined, name: "Todos los países" },
+      { value: "select", name: "Todos los países" },
       { value: "Argentina", name: "Argentina" },
       { value: "Brasil", name: "Brasil" },
       { value: "Chile", name: "Chile" },
       { value: "Uruguay", name: "Uruguay" }
     ];
     const priceOptions = [
-      { value: undefined, name: "Cualquier precio" },
+      { value: "select", name: "Cualquier precio" },
       { value: 1, name: "$" },
       { value: 2, name: "$$" },
       { value: 3, name: "$$$" },
       { value: 4, name: "$$$$" }
     ];
     const roomOptions = [
-      { value: undefined, name: "Cualquier tamaño" },
+      { value: "select", name: "Cualquier tamaño" },
       { value: 10, name: "Hotel pequeño" },
       { value: 20, name: "Hotel mediano" },
       { value: 30, name: "Hotel grande" }
